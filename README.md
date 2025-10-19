@@ -3,7 +3,7 @@
 
 <div align="center">
 
-**AI-Powered Text-to-Minecraft Building Generator**
+**AI-Powered Text-to-Minecraft Building Generator**  
 *Transform your imagination into Minecraft structures with multimodal AI*
 
 [![License](https://img.shields.io/badge/License-NVIDIA_Source_Code_License-blue.svg)](LICENSE.md)
@@ -17,38 +17,48 @@
 
 ---
 
-## ✨ Features
+## ✨ FEATURES / 核心功能
 
-* 🎨 **Text-to-Image** — Generate building concepts using **Nano Banana diffusion model**
-* 🧱 **Image-to-3D** — Convert 2D images into 3D voxelized models (8192-dim latent space)
-* 🎭 **AI Material System** — Intelligent block material assignment (Gemini 2.5 Flash)
-* 🔄 **Real-time Preview** — Interactive 3D viewer with part-level editing
-* 📦 **Schematic Export** — Export to Minecraft 1.12 `.schematic`
-* 💾 **Save/Load System** — Persistent state + ZIP export
-* 🎮 **Texture Pack Support** — Custom Minecraft texture packs
+- 🎨 **TEXT TO IMAGE / 文本到图像** — Nano Banana model generates 518×518 images from text prompts in ~1.8s.  
+  模型从文本提示生成 518×518 图像，耗时约 1.8 秒。
+- 🧱 **IMAGE TO 3D / 图像到 3D** — Hierarchical 3D generation with 8192-dim latent space and DINOv2 ViT-g/14 encoder.  
+  使用分层生成与 8192 维潜空间（DINOv2 ViT-g/14）生成精细 3D 网格。
+- 🎭 **AI MATERIALS / AI 自动选材** — Gemini 2.5 Flash vision-language model assigns Minecraft block materials (≈92.3% accuracy).  
+  使用 Gemini 2.5 Flash 为部件智能匹配 Minecraft 方块材料。
+- 🔄 **REAL-TIME PREVIEW / 实时预览** — Interactive Three.js viewer with part-level editing and multi-view rendering.  
+  可交互 3D 预览，支持部件级编辑与多视图渲染。
+- 📦 **SCHEMATIC EXPORT / 蓝图导出** — Convert directly to Minecraft 1.12 `.schematic` (NBT + GZIP).  
+  直接导出为 `.schematic` 文件，兼容 Minecraft 1.12。
+- 💾 **SAVE/LOAD SYSTEM / 保存与加载** — Persistent state with localStorage + ZIP export for session recovery.  
+  支持本地保存、ZIP 导出与会话恢复。
 
 ---
 
-## 🎮 Live Demo
+## 🎮 Live Demo / 在线演示
 
 ![Demo Interface](assets/demo_interface.png)
 
 **Try it now:** 👉 [https://nianxi666.github.io/mine-builder2.0/](https://nianxi666.github.io/mine-builder2.0/)
 
-### Example Outputs
+### 🖼️ Live Demo Screenshot
+（已添加仓库截图）
+
+![Live Demo Screenshot](https://raw.githubusercontent.com/nianxi666/mine-builder2.0/main/IMG_20251018_193809.jpg)
+
+### Example Outputs / 示例展示
 
 <div align="center">
 
-|              Fantasy Castle             |            Modern Building           |                   Tree House                  |
-| :-------------------------------------: | :----------------------------------: | :-------------------------------------------: |
-|    <img src="001.jpeg" width="250"/>    |    <img src="1.png" width="250"/>    | <img src="final_ai_artwork.png" width="250"/> |
-| *Prompt: medieval fortress with towers* | *Prompt: minimalist glass structure* |       *Prompt: organic forest dwelling*       |
+| Fantasy Castle | Modern Building | Tree House |
+|:--:|:--:|:--:|
+| <img src="001.jpeg" width="250" alt="Fantasy Castle" /> | <img src="1.png" width="250" alt="Modern Building" /> | <img src="final_ai_artwork.png" width="250" alt="Tree House" /> |
+| *Prompt: medieval fortress with towers* | *Prompt: minimalist glass structure* | *Prompt: organic forest dwelling* |
 
 </div>
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ System Architecture / 系统架构 (概览)
 
 ```text
 ┌────────────────────┐
@@ -78,46 +88,53 @@
 │  Voxelization (32³)      │  📦 NBT Encoding
 │  + Schematic Export      │  GZIP compression
 └──────────────────────────┘
-```
+````
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start / 快速开始
 
 ### Prerequisites
 
 * Python 3.10+
-* CUDA GPU (e.g. RTX 4090, 24GB VRAM)
+* CUDA-capable GPU (recommended: RTX 4090 with 24GB VRAM)
 * 16GB+ RAM
-* Gemini API Key → [Get one here](https://aistudio.google.com/)
+* Gemini API Key — [Get one here](https://aistudio.google.com/)
 
 ### Installation
 
 ```bash
+# Clone the repo
 git clone https://github.com/nianxi666/mine-builder2.0.git
 cd mine-builder2.0
+
+# Optionally checkout feature branch
 git checkout feat/persist-materials-localstorage
+
+# Install Python dependencies
 pip install -r requirements.txt
+
+# (Optional) Save your Gemini API key
 echo "YOUR_GEMINI_API_KEY" > key.txt
 ```
 
-### Run
+### Run the App
 
-**Web Interface**
+**Option 1 — Interactive Web Interface**
 
 ```bash
 python server.py
-# Visit http://localhost:5000
+# Open http://localhost:5000
 ```
 
-**Gradio Interface**
+**Option 2 — Gradio (Image→3D only)**
 
 ```bash
 python app.py
-# Visit http://localhost:7860
+# Open http://localhost:7860
 ```
 
-**CLI Conversion**
+**Option 3 — CLI: Convert voxel TXT to .schematic**
 
 ```bash
 python txt_to_schematic.py voxel_output.txt my_building.schematic
@@ -125,47 +142,36 @@ python txt_to_schematic.py voxel_output.txt my_building.schematic
 
 ---
 
-## 📖 Usage Guide
+## 📖 Usage Guide / 使用说明
 
 ### 1️⃣ Generate from Text
 
-1. Run `python server.py`
-2. Enter Gemini API key
-3. Upload reference image (and texture pack if needed)
-4. Click **Run AI Agent**
-5. Export `.schematic`
+1. Start server: `python server.py`
+2. Enter Gemini API key when prompted
+3. Upload reference image (or use text-only)
+4. Click **Run AI Agent** to auto-generate materials & voxelization
+5. Export `.schematic` and import into Minecraft
 
 ### 2️⃣ Manual Editing
 
-* Select model parts and assign blocks
-* Delete unwanted voxels
-* Orbit/zoom camera with mouse
+* Select parts in the 3D viewer to apply materials
+* Delete voxels or paint on voxel grid
+* Camera: orbit / zoom / reset with UI buttons
 
 ### 3️⃣ Advanced
 
-* Multi-view collage for AI
-* Save/load full session
-* Pause/resume AI agent
+* Multi-view collage to help material assignment
+* Save full session (ZIP) including voxel data + chat history
+* Load previous saves from file or URL
 
 ---
 
-## 🎯 Example Prompts
+## 🔧 Configuration / 配置
 
-**Format:** `[Style] + [Structure] + [Material] + [Viewpoint]`
-
-✅ `"medieval stone castle, dark oak accents, isometric view"`
-✅ `"futuristic station, glass panels, front view"`
-❌ `"beautiful building"`
-❌ `"castle with 47 windows"`
-
----
-
-## 🔧 Configuration
-
-### app.py
+### Model / app parameters (edit `app.py`)
 
 ```python
-LATENT_SIZE = 4096
+LATENT_SIZE = 4096      # Per-part latent dimension (total: 8192)
 HIDDEN_DIM = 1536
 GRID_RES = 384
 FLOW_SHIFT = 3.0
@@ -173,39 +179,56 @@ LOGITNORM_MEAN = 1.0
 LOGITNORM_STD = 1.0
 ```
 
-### server.py
+### Server options (`server.py`)
 
 ```bash
+# Start with pre-loaded model
+python server.py --input_model path/to/model.glb
+
+# Start with saved session
+python server.py --input_data path/to/save.zip
+
+# Custom port
 python server.py --port 8080
-python server.py --input_model model.glb
-python server.py --input_data save.zip
 ```
 
 ---
 
-## 📊 Technical Specs
+## 📊 Technical Specifications / 技术规格
 
-| Parameter         | Value           | Description          |
-| ----------------- | --------------- | -------------------- |
-| Latent Dimension  | 8192            | Dual-part latent     |
-| Visual Encoder    | DINOv2 ViT-g/14 | Feature extraction   |
-| Hidden Dimension  | 1536            | Internal layer size  |
-| Voxel Resolution  | 384³ → 32³      | Internal → Minecraft |
-| End-to-End Time   | ~14.7s          | RTX 4090             |
-| Material Accuracy | 92.3%           |                      |
-| File Size         | ~8.4KB          | compressed           |
+| Parameter               | Value             | Notes                           |
+| ----------------------- | ----------------- | ------------------------------- |
+| Latent Dimension        | 4096 × 2          | Dual-part latent                |
+| Visual Encoder          | DINOv2 ViT-g/14   | Feature extraction              |
+| Hidden Dimension        | 1536              | Internal size                   |
+| VAE Decoding Resolution | 384³              | High-fidelity internal          |
+| Output (Minecraft)      | 32³               | Voxel output for game           |
+| End-to-End Time         | ~14.7s (RTX 4090) | T2I + I23D + materials + encode |
+| Material Accuracy       | 92.3%             | Measured on test set            |
+| Part Recognition        | 96.7%             | -                               |
+| Compressed File Size    | ~8.4KB            | Typical schematic (compressed)  |
 
 ---
 
-## 🎨 Supported Blocks
+## 🎨 Supported Minecraft Blocks
+
+Supports **150+** Minecraft 1.12 vanilla blocks, e.g.:
+
+* **Building**: Stone, Cobblestone, Stone Brick, Oak/Spruce/etc planks
+* **Decorative**: Wool (16), Concrete (16), Stained Glass (16), Terracotta (16)
+* **Natural**: Grass, Dirt, Sand, Leaves, Logs
+* **Functional**: Stairs, Slabs, Fences, Doors, Redstone components
 
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand full block categories</summary>
 
-**Building Blocks** — Stone, Cobblestone, Bricks, Planks
-**Decorative** — Wool, Concrete, Stained Glass, Terracotta
-**Natural** — Grass, Dirt, Sand, Leaves, Logs
-**Functional** — Stairs, Slabs, Doors, Redstone parts
+**Building Blocks**: Stone, Cobblestone, Stone Brick, Smooth Stone, Oak/Spruce/Birch/Jungle/Acacia/Dark Oak Planks, Bricks, Nether Brick, End Stone Brick
+
+**Decorative Blocks**: Wool (all 16 colors), Concrete (all 16 colors), Stained Glass (all 16 colors), Terracotta (all 16 colors)
+
+**Natural Blocks**: Grass, Dirt, Sand, Gravel, Leaves, Logs (all wood types), Water, Lava, Ice
+
+**Functional Blocks**: Stairs, Slabs, Fences (all materials), Doors, Trapdoors, Pressure Plates, Redstone components
 
 </details>
 
@@ -215,80 +238,85 @@ python server.py --input_data save.zip
 
 ```text
 mine-builder2.0/
-├── server.py
-├── app.py
-├── txt_to_schematic.py
-├── requirements.txt
-├── key.txt
-├── input/
-├── cache/
-├── saves/
-├── assets/
-├── data/
-├── flow/
-├── vae/
-└── docker/
+├── server.py              # Main Flask app with 3D viewer
+├── app.py                 # Gradio interface for image-to-3D
+├── txt_to_schematic.py    # Voxel-to-schematic converter
+├── requirements.txt       # Python dependencies
+├── key.txt                # (Optional) Gemini API key storage
+├── input/                 # Input models & reference images
+├── cache/                 # Downloaded model cache
+├── saves/                 # Exported sessions
+├── assets/                # Images, icons, demo assets
+├── data/                  # Training data & configs
+├── flow/                  # Flow model implementation
+├── vae/                   # VAE model implementation
+└── docker/                # Docker configs
 ```
 
 ---
 
-## 🐛 Troubleshooting
+## 🐛 Troubleshooting / 常见问题
 
 **API Key Invalid**
 
 ```bash
-# Check key validity: https://aistudio.google.com/app/apikey
+# Ensure key is correct and not expired:
+# https://aistudio.google.com/app/apikey
 ```
 
-**OOM Error**
+**Out of Memory (OOM)**
 
 ```python
+# reduce voxel resolution
 VOXEL_RESOLUTION = 16
 ```
 
 **Model Download Fails**
 
-> Manually download from Hugging Face (see console output).
+* Check console for model URLs and manually download from Hugging Face if needed.
 
-**Texture Pack Missing**
+**Texture Pack Not Loading**
 
 ```
 texture_pack.zip
- └── assets/minecraft/textures/blocks/*.png
+  └── assets/minecraft/textures/blocks/*.png
 ```
 
 ---
 
 ## 🤝 Contributing
 
-1. Fork & branch (`feature/your-feature`)
-2. Commit & push
-3. Open a Pull Request
+We welcome contributions!
 
-**Coding Rules:**
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit & push: `git commit -m "Add feature"` / `git push origin feature/your-feature`
+4. Open a Pull Request
 
-* Follow PEP 8
-* Add docstrings
-* Write unit tests
+**Guidelines**
+
+* Follow PEP 8 for Python
+* Add docstrings & unit tests
+* Update docs for new features
 
 ---
 
 ## 📄 License
 
-Licensed under **NVIDIA Source Code License**.
-**Non-commercial use only.**
+Licensed under the **NVIDIA Source Code License** — see [LICENSE.md](LICENSE.md).
+**Important:** This project is for **NON-COMMERCIAL USE ONLY**.
 
 ---
 
 ## 🙏 Acknowledgments
 
-* [NVlabs/PartPacker](https://github.com/NVlabs/PartPacker)
-* Nano Banana diffusion model
-* Google Gemini 2.5 Flash
-* Meta DINOv2 ViT-g/14
-* [Faithful 32x](https://faithful.team/)
-* [Three.js](https://threejs.org/)
-* [rembg](https://github.com/danielgatis/rembg)
+* **Base**: Forked from [NVlabs/PartPacker](https://github.com/NVlabs/PartPacker)
+* **Diffusion**: Nano Banana
+* **Vision-Language**: Google Gemini 2.5 Flash
+* **Feature Extraction**: DINOv2 by Meta AI
+* **Texture Pack**: [Faithful 32x](https://faithful.team/)
+* **Rendering**: [Three.js](https://threejs.org/)
+* **Background removal**: [rembg](https://github.com/danielgatis/rembg)
 
 ---
 
@@ -308,19 +336,19 @@ Licensed under **NVIDIA Source Code License**.
 
 ## 🗺️ Roadmap
 
-**v2.1**
+**Short-term (v2.1)**
 
 * [ ] 64³ / 128³ voxel support
 * [ ] Batch generation
-* [ ] Style transfer
-* [ ] Text-based editing
+* [ ] Style transfer from reference images
+* [ ] Enhanced text-based editing
 
-**v3.0**
+**Long-term (v3.0)**
 
-* [ ] End-to-end text→voxel
-* [ ] Physics simulation
+* [ ] End-to-end text → voxel model
+* [ ] Physical stability simulation
 * [ ] Redstone circuit generation
-* [ ] Terraria / Roblox support
+* [ ] Support for Terraria, Roblox, other voxel games
 
 ---
 
