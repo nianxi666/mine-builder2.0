@@ -39,7 +39,7 @@
 
 **Try it now:** 👉 [https://pumpkinai.space/Mine-builder](https://pumpkinai.space/Mine-builder)
 
-**Alternative Demo:** 👉 [https://nianxi666.github.io/mine-builder-demo](https://nianxi666.github.io/mine-builder-demo)
+**Alternative Demo:** 👉 [https://nianxi666.github.io/mine-builder-demo](https://nianxi666.github.io/mine-builder-demo/)
 
 ### 🖼️ Live Demo Screenshot
 （已添加仓库截图）
