@@ -42,7 +42,7 @@
 **Alternative Demo:** 👉 [https://nianxi666.github.io/mine-builder-demo](https://nianxi666.github.io/mine-builder-demo/)
 
 ### 🖼️ Live Demo Screenshot
-（已添加仓库截图）
+
 
 ![Live Demo Screenshot](https://raw.githubusercontent.com/nianxi666/mine-builder2.0/main/IMG_20251018_193809.jpg)
 
