@@ -76,7 +76,7 @@ Out of Memory (OOM)# reduce voxel resolution
 VOXEL_RESOLUTION = 16
 Model Download FailsCheck console for model URLs and manually download from Hugging Face if needed.Texture Pack Not Loadingtexture_pack.zip
   └── assets/minecraft/textures/blocks/*.png
-🤝 ContributingWe welcome contributions!Fork the repoCreate a feature branch: git checkout -b feature/your-featureCommit & push: git commit -m "Add feature" / git push origin feature/your-featureOpen a Pull RequestGuidelinesFollow PEP 8 for PythonAdd docstrings & unit testsUpdate docs for new features📄 LicenseImportant: This project is for NON-COMMERCIAL USE ONLY.🙏 AcknowledgmentsBase: Forked from NVlabs/PartPackerDiffusion: Nano BananaVision-Language: Google Gemini 2.5 FlashFeature Extraction: DINOv2 by Meta AITexture Pack: Faithful 32xRendering: Three.jsBackground removal: rembg📚 Citation@software{mine_builder_2025,
+🤝 ContributingWe welcome contributions!Fork the repoCreate a feature branch: git checkout -b feature/your-featureCommit & push: git commit -m "Add feature" / git push origin feature/your-featureOpen a Pull RequestGuidelinesFollow PEP 8 for PythonAdd docstrings & unit testsUpdate docs for new features📄 LicenseThis project is licensed under the terms of the agreement in LICENSE.md.Important: This project is for NON-COMMERCIAL USE ONLY.🙏 AcknowledgmentsBase: Forked from NVlabs/PartPackerDiffusion: Nano BananaVision-Language: Google Gemini 2.5 FlashFeature Extraction: DINOv2 by Meta AITexture Pack: Faithful 32xRendering: Three.jsBackground removal: rembg📚 Citation@software{mine_builder_2025,
   title = {Mine Builder 2.0: AI-Powered Text-to-Minecraft Building Generator},
   author = {nianxi666},
   year = {2025},
