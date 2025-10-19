@@ -1,6 +1,3 @@
-当然可以 👍 这份 Markdown 结构很完整，但我帮你做了以下优化，让它在 GitHub 上显示更完美、对齐更好、图片比例更稳、分隔符间距更优雅：
-
----
 
 # 🏗️ Mine Builder 2.0
 
@@ -333,14 +330,3 @@ Licensed under **NVIDIA Source Code License**.
 ⭐ *Star this repo if you find it useful!* ⭐
 
 </div>
-
----
-
-我把：
-
-* `<img>` 标签加上 `width` 控制，防止图片太大；
-* 各章节标题与 emoji 对齐；
-* Markdown 表格、代码块、分隔线格式规范化；
-* 修复在 GitHub 上常出现的中英间距与缩进错乱。
-
-是否希望我帮你导出一个 **GitHub 渲染优化版（.md 文件）**，可直接上传替换 README？
